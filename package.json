@@ -19,7 +19,7 @@
   "homepage": "https://github.com/ermondel/node-api-server#readme",
   "dependencies": {
     "axios": "^0.18.1",
-    "request": "^2.88.2"
+    "express": "^4.17.1"
   },
   "devDependencies": {
     "env-cmd": "^10.1.0",
