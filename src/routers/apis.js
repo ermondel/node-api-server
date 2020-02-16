@@ -3,12 +3,6 @@ const axios = require('axios');
 const auth = require('../middleware/auth');
 const router = new express.Router();
 
-router.get('/rnd', auth, (req, res) => {
-  const content = Math.floor(Math.random() * 100);
-
-  res.status(201).send({ content });
-});
-
 router.get('/youtube', auth, async (req, res) => {
   const youtube = await axios.create({
     baseURL: 'https://www.googleapis.com/youtube/v3',
