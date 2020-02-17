@@ -24,4 +24,30 @@ router.get('/youtube', auth, async (req, res) => {
     });
 });
 
+router.get('/unsplash', auth, async (req, res) => {
+  const unsplash = await axios.create({
+    baseURL: 'https://api.unsplash.com',
+    headers: {
+      Authorization: 'Client-ID ' + process.env.UNSPLASH_API
+    }
+  });
+
+  unsplash
+    .get('/search/photos', {
+      params: {
+        query: req.query.q
+      }
+    })
+    .then((response) => {
+      if (response.headers['x-ratelimit-remaining'] > 0) {
+        res.status(200).send(response.data);
+      } else {
+        res.status(500).send();
+      }
+    })
+    .catch((error) => {
+      res.status(500).send();
+    });
+});
+
 module.exports = router;
