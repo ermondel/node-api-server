@@ -1,8 +1,8 @@
 const auth = (req, res, next) => {
-  const whiteList = process.env.WHITE_LIST;
-  const allow = whiteList.split(';').includes(req.headers.referer);
+  const allowedOrigins = process.env.WHITE_LIST.split(';').map((el) => el + '/');
+  const referer = req.headers.referer;
 
-  if (allow) {
+  if (allowedOrigins.indexOf(referer) >= 0) {
     next();
   } else {
     res.status(401).send({ error: 'Please authenticate.' });

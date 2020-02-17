@@ -6,8 +6,12 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  const allowedOrigins = process.env.WHITE_LIST.split(';');
+  const origin = req.headers.origin;
+  if (allowedOrigins.indexOf(origin) >= 0) {
+    res.header('Access-Control-Allow-Origin', origin);
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  }
   next();
 });
 
