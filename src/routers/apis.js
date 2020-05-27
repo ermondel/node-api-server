@@ -58,8 +58,12 @@ router.get('/request/:api', auth, async (req, res) => {
       const response = await request.get(APIConfig[api].url);
       res.status(200).send(response.data);
     } catch (error) {
-      console.log('[error]', 500, error.message);
-      res.status(500).send();
+      console.log('[error]', error.message);
+      if (error.response.status === 404) {
+        res.status(404).send();
+      } else {
+        res.status(500).send();
+      }
     }
   }
 });
