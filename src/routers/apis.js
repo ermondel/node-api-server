@@ -19,6 +19,11 @@ const APIConfig = {
     key: process.env.OPENWEATHERMAP_API,
     keyParam: 'appid',
   },
+  googletranslate: {
+    url: 'https://translation.googleapis.com/language/translate/v2',
+    key: process.env.GOOGLETRANSLATE_API,
+    keyParam: 'key',
+  },
 };
 
 router.get('/request/:api', auth, async (req, res) => {
