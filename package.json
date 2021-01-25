@@ -1,6 +1,6 @@
 {
   "name": "node-api-server",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "description": "node api server",
   "main": "index.js",
   "scripts": {
@@ -18,11 +18,11 @@
   },
   "homepage": "https://github.com/ermondel/node-api-server#readme",
   "dependencies": {
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "express": "^4.17.1"
   },
   "devDependencies": {
     "env-cmd": "^10.1.0",
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.7"
   }
 }
